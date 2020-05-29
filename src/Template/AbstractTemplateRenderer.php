@@ -23,6 +23,9 @@ abstract class AbstractTemplateRenderer implements TemplateRendererInterface
      */
     public function addPath(string $path, ?string $namespace = null): void
     {
+        $path = rtrim($path, '/').'/';
+        $namespace = trim($namespace);
+
         if ($namespace) {
             $this->paths[$namespace] = $path;
         } else {
